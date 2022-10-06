@@ -1,0 +1,36 @@
+.add-note-wrapper {
+    margin-top: 20px;
+}
+
+.add-note-wrapper h1 {
+    margin: 0px;
+}
+
+.form-wrapper {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.form-wrapper input {
+    padding: 10px 70px;
+}
+
+.form-wrapper button {
+    padding: 10px 50px;
+    background: #198754;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-wrapper button:hover {
+    padding: 10px 50px;
+    background: #157347;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}

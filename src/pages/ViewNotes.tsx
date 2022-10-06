@@ -11,10 +11,10 @@ const ViewNotes = () => {
     return (
         <>
             <Header />
-            <div className="">
+            <div className="notes-list-wrapper">
                 <h1>View Notes</h1>
 
-                <ul className='container'>
+                <ul>
                     {dummyData.map(item => (
                         <li key={item.id}>{item.name}</li>
                     ))}
