@@ -1,7 +1,6 @@
 
 import './App.css';
-import Header from './components/Header';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ViewNotes from './pages/ViewNotes';
 import AddNotes from './pages/AddNotes';
 

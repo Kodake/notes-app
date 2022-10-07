@@ -1,13 +1,32 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../components/Header';
+import { AppState } from '../globalStore/rootReducer';
+import { NoteData } from '../interfaces/notesListData';
+import { initGetListData } from '../store/listNotes/actions';
 import './ViewNotes.css'
 
-const dummyData = [
-    { name: 'first note', id: 1 },
-    { name: 'second note', id: 2 },
-    { name: 'third note', id: 3 },
-]
-
 const ViewNotes = () => {
+    const dispatch = useDispatch();
+    const { notesList, isNotesDataFetching } = useSelector((state: AppState) => state.NotesListReducer)
+
+    useEffect(() => {
+        dispatch(initGetListData())
+    }, []);
+
+    if (isNotesDataFetching) {
+        return (
+            <>
+                <Header />
+                <div className="notes-list-wrapper">
+                    <h1>View Notes</h1>
+
+                    <div>Notes data is loading...</div>
+                </div>
+            </>
+        )
+    }
+
     return (
         <>
             <Header />
@@ -15,7 +34,7 @@ const ViewNotes = () => {
                 <h1>View Notes</h1>
 
                 <ul>
-                    {dummyData.map(item => (
+                    {notesList && notesList.map((item: NoteData) => (
                         <li key={item.id}>{item.name}</li>
                     ))}
                 </ul>

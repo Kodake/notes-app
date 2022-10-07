@@ -1,7 +1,10 @@
-export const INIT_SAVE_NOTES_VALUE = 'INIT_SAVE_NOTES_VALUE'
+// Add Notes
+
+export const INIT_SAVE_NOTES_VALUE = 'INIT_SAVE_NOTES_VALUE';
 export const SAVE_NOTES_VALUE_SUCCESSFULL = 'SAVE_NOTES_VALUE_SUCCESSFULL';
 export const SAVE_NOTES_VALUE_FAILED = 'SAVE_NOTES_VALUE_FAILED';
 
+// Add Notes Interfaces
 export interface InitSaveNotesValueAction {
   type: typeof INIT_SAVE_NOTES_VALUE,
   notesValue: string

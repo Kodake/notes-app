@@ -1,12 +1,14 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import { INIT_SAVE_NOTES_VALUE, NotesAction } from './actionTypes';
 import axios from 'axios';
-import { NotesData } from '../interfaces/notesData';
 import { initSaveNotesValueSuccessfull, initSaveNotesValueFailed } from './actions';
+import { NotesData } from '../../interfaces/notesData';
 
-export default function* AddNotesSaga() {
+export function* AddNotesSaga() {
   yield takeEvery(INIT_SAVE_NOTES_VALUE, saveNotesSaga);
 }
+
+// Add Notes
 
 function* saveNotesSaga(action: NotesAction) {
 

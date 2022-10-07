@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../components/Header';
-import { initSaveNotesValue, initSaveNotesValueSuccessfull } from '../store/actions';
+import { initSaveNotesValue, initSaveNotesValueSuccessfull } from '../store/addNotes/actions';
 import './AddNotes.css';
-import AddNotesReducer from '../store/reducers';
 import { useNavigate } from 'react-router-dom';
 import { AppState } from '../globalStore/rootReducer';
 
