@@ -1,12 +1,26 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../components/Header';
-import { getNotesValue } from '../store/actions';
+import { initSaveNotesValue, initSaveNotesValueSuccessfull } from '../store/actions';
 import './AddNotes.css';
+import AddNotesReducer from '../store/reducers';
+import { useNavigate } from 'react-router-dom';
+import { AppState } from '../globalStore/rootReducer';
 
 const AddNotes = () => {
   const [noteName, setNoteName] = useState('');
   const dispatch = useDispatch();
+  const nav = useNavigate();
+
+  const { success } = useSelector((state: AppState) => state.AddNotesReducer);
+
+  useEffect(() => {
+    if (success) {
+      setNoteName('');
+      nav('/');
+      dispatch(initSaveNotesValueSuccessfull(false));
+    }
+  }, [success])
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -14,7 +28,7 @@ const AddNotes = () => {
   }
 
   const handleClick = () => {
-    dispatch(getNotesValue(noteName))
+    dispatch(initSaveNotesValue(noteName))
   }
 
   return (
@@ -24,9 +38,9 @@ const AddNotes = () => {
         <h1>Add Notes</h1>
 
         <div className='form-wrapper'>
-          <input name='addTodo' placeholder='Todo Name' onChange={handleOnChange} />
+          <input name='addTodo' placeholder='Todo Name' onChange={handleOnChange} value={noteName} />
 
-          <button onClick={handleClick}>Add Todo</button>
+          <button disabled={noteName.trim() === ''} onClick={handleClick}>Add Todo</button>
         </div>
       </div>
     </>

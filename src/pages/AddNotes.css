@@ -34,3 +34,8 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.form-wrapper button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}

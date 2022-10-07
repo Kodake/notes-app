@@ -1,8 +1,29 @@
-import { GET_NOTES_VALUE } from "./actionTypes"
+import {
+    INIT_SAVE_NOTES_VALUE,
+    SAVE_NOTES_VALUE_SUCCESSFULL,
+    SAVE_NOTES_VALUE_FAILED
+} from './actionTypes';
 
-export const getNotesValue = (notesValue: string) => {
+export const initSaveNotesValue = (notesValue: string) => {
+
     return {
-        type: GET_NOTES_VALUE,
+        type: INIT_SAVE_NOTES_VALUE,
         notesValue
+    }
+}
+
+export const initSaveNotesValueSuccessfull = (success: boolean) => {
+
+    return {
+        type: SAVE_NOTES_VALUE_SUCCESSFULL,
+        success
+    }
+}
+
+export const initSaveNotesValueFailed = (failed: boolean) => {
+
+    return {
+        type: SAVE_NOTES_VALUE_FAILED,
+        failed
     }
 }

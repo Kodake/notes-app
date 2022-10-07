@@ -8,12 +8,10 @@ import AddNotes from './pages/AddNotes';
 const App = () => {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<ViewNotes />}></Route>
-          <Route path='/add-note' element={<AddNotes />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path='/' element={<ViewNotes />}></Route>
+        <Route path='/add-note' element={<AddNotes />}></Route>
+      </Routes>
     </div>
   );
 }

@@ -1,12 +1,34 @@
-import {takeEvery} from 'redux-saga/effects';
-import { GET_NOTES_VALUE } from './actionTypes';
-
-
+import { takeEvery, call, put } from 'redux-saga/effects';
+import { INIT_SAVE_NOTES_VALUE, NotesAction } from './actionTypes';
+import axios from 'axios';
+import { NotesData } from '../interfaces/notesData';
+import { initSaveNotesValueSuccessfull, initSaveNotesValueFailed } from './actions';
 
 export default function* AddNotesSaga() {
-  yield takeEvery(GET_NOTES_VALUE, getNotesSaga);
+  yield takeEvery(INIT_SAVE_NOTES_VALUE, saveNotesSaga);
 }
 
-function* getNotesSaga() {
-  console.log('getting notes saga here');
+function* saveNotesSaga(action: NotesAction) {
+
+  const headerParams = {
+    'content-type': 'application/json'
+  }
+
+  const createNotesData = {
+    name: action.notesValue,
+    id: Math.floor(Math.random() * 1000)
+  }
+
+  try {
+    const resp: NotesData = yield call(axios.post,
+      'https://genericdb-c3969-default-rtdb.firebaseio.com/notesList.json',
+      createNotesData, { headers: headerParams });
+
+    if (resp.status === 200) {
+      yield put(initSaveNotesValueSuccessfull(true));
+    }
+
+  } catch (error) {
+    yield put(initSaveNotesValueFailed(false));
+  }
 }

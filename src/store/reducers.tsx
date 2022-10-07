@@ -1,20 +1,36 @@
-import { NotesAction, GetNotesValueAction, GET_NOTES_VALUE } from './actionTypes';
+import { NotesAction, SAVE_NOTES_VALUE_SUCCESSFULL, SAVE_NOTES_VALUE_FAILED, INIT_SAVE_NOTES_VALUE } from './actionTypes';
 
 export type NotesState = {
-  flag: boolean;
+  success: boolean;
+  failed: boolean;
+  notesValue: string;
 }
 
 const initialState: NotesState = {
-  flag: false,
+  success: false,
+  failed: false,
+  notesValue: '',
 }
 
 const AddNotesReducer = (state = initialState, action: NotesAction) => {
   switch (action.type) {
-    case GET_NOTES_VALUE:
+    case INIT_SAVE_NOTES_VALUE:
       return {
         ...state,
-        flag: true
-      }
+        notesValue: action.notesValue
+      };
+
+    case SAVE_NOTES_VALUE_SUCCESSFULL:
+      return {
+        ...state,
+        success: action.success
+      };
+
+    case SAVE_NOTES_VALUE_FAILED:
+      return {
+        ...state,
+        success: action.failed
+      };
 
     default:
       return state;
