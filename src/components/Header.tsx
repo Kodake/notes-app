@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <Navbar bg='primary' variant='dark'>
             <Container>
-                <Navbar.Brand onClick={() => nav(`/`)}>Notes App</Navbar.Brand>
+                <Navbar.Brand><Nav.Link onClick={() => nav(`/`)}>Notes App</Nav.Link></Navbar.Brand>
                 <Nav className='me-auto'>
                     <Nav.Link onClick={() => nav(`/`)}>List Notes</Nav.Link>
                     <Nav.Link onClick={() => nav(`/add-note`)}>Add Notes</Nav.Link>

@@ -20,14 +20,14 @@ const ListNotes = () => {
 
     useEffect(() => {
         dispatch(initGetListData())
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (success) {
             dispatch(initGetListData())
             dispatch(initDeleteNotesSuccessfull(false))
         }
-    }, [success]);
+    }, [dispatch, success]);
 
     const handleClick = (id: string) => {
         Swal.fire({

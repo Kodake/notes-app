@@ -22,7 +22,7 @@ const AddNotes = () => {
       nav('/');
       dispatch(initSaveNotesValueSuccessfull(false));
     }
-  }, [success])
+  }, [nav, dispatch, success])
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -51,13 +51,3 @@ const AddNotes = () => {
 }
 
 export default AddNotes;
-
-{/* <div className='add-note-wrapper'>
-        <h1>Add Notes</h1>
-
-        <div className='form-wrapper'>
-          <input name='addTodo' placeholder='Todo Name' onChange={handleOnChange} value={noteName} />
-
-          <button disabled={noteName.trim() === ''} onClick={handleClick}>Add Todo</button>
-        </div>
-      </div> */}
