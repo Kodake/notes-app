@@ -1,5 +1,5 @@
 export interface NoteData {
-    id: number;
+    id: string;
     name: string;
 }
 

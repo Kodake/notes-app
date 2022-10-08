@@ -22,7 +22,7 @@ function* getNotesListSaga() {
       const newData: NoteData[] = [];
 
       for (const key in data) {
-        newData.push(data[key])
+        newData.push({id: key, name: data[key].name})
       }      
 
       yield put(initFetchingGetListDataSuccess(newData))

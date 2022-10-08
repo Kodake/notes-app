@@ -1,4 +1,3 @@
-import { NoteData } from '../../interfaces/notesListData';
 import {
     INIT_SAVE_NOTES_VALUE,
     SAVE_NOTES_VALUE_SUCCESSFULL,
