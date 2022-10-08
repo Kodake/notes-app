@@ -1,14 +1,13 @@
 
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import ViewNotes from './pages/ViewNotes';
+import ListNotes from './pages/ListNotes';
 import AddNotes from './pages/AddNotes';
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <Routes>
-        <Route path='/' element={<ViewNotes />}></Route>
+        <Route path='/' element={<ListNotes />}></Route>
         <Route path='/add-note' element={<AddNotes />}></Route>
       </Routes>
     </div>

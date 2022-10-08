@@ -1,16 +1,19 @@
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import './Header.css';
 
 const Header = () => {
     const nav = useNavigate();
 
     return (
-        <header className="header">
-            <ul>
-                <li onClick={() => nav(`/`)}>View Notes</li>
-                <li onClick={() => nav(`/add-note`)}>Add Note</li>
-            </ul>
-        </header>
+        <Navbar bg='primary' variant='dark'>
+            <Container>
+                <Navbar.Brand onClick={() => nav(`/`)}>Notes App</Navbar.Brand>
+                <Nav className='me-auto'>
+                    <Nav.Link onClick={() => nav(`/`)}>List Notes</Nav.Link>
+                    <Nav.Link onClick={() => nav(`/add-note`)}>Add Notes</Nav.Link>
+                </Nav>
+            </Container>
+        </Navbar>
     )
 }
 
