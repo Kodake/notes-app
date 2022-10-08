@@ -7,13 +7,13 @@ export type NotesListState = {
   isNotesDataFetchingFailed: boolean;
 }
 
-const initialNotesListState: NotesListState = {
+const initialState: NotesListState = {
   notesList: [],
   isNotesDataFetching: false,
   isNotesDataFetchingFailed: false
 }
 
-export const NotesListReducer = (state = initialNotesListState, action: NotesListAction) => {
+export const NotesListReducer = (state = initialState, action: NotesListAction) => {
   switch (action.type) {
     case FETCHING_GET_LIST_DATA:
       return {

@@ -6,13 +6,13 @@ export type NotesState = {
   notesValue: string;
 }
 
-const initialNotesState: NotesState = {
+const initialState: NotesState = {
   success: false,
   failed: false,
   notesValue: '',
 }
 
-const AddNotesReducer = (state = initialNotesState, action: NotesAction) => {
+const AddNotesReducer = (state = initialState, action: NotesAction) => {
   switch (action.type) {
     case INIT_SAVE_NOTES_VALUE:
       return {
