@@ -11,6 +11,7 @@ import { AppState } from '../globalStore/rootReducer';
 import { NoteData } from '../interfaces/notesListData';
 import { initDeleteNotes, initDeleteNotesSuccessfull } from '../store/deleteNotes/actions';
 import { initGetListData } from '../store/listNotes/actions';
+import Swal from 'sweetalert2'
 
 const ListNotes = () => {
     const dispatch = useDispatch();
@@ -29,7 +30,24 @@ const ListNotes = () => {
     }, [success]);
 
     const handleClick = (id: string) => {
-        dispatch(initDeleteNotes(id))
+        Swal.fire({
+            title: `Are you sure to delete the note with the id: ${id}?`,
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(initDeleteNotes(id))
+                Swal.fire(
+                    'Deleted!',
+                    `Your note with the id: ${id} has been deleted.`,
+                    'success'
+                );
+            }
+        })
     }
 
     if (isNotesDataFetching) {
@@ -38,7 +56,6 @@ const ListNotes = () => {
                 <Header />
                 <Container>
                     <h1 className='mt-2 text-center'>View Notes</h1>
-
                     <Loading />
                 </Container>
             </>
